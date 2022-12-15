@@ -2,27 +2,15 @@ import pandas as pd
 
 def preprocess(file_name):
     df = pd.read_csv(file_name)
-    for i in df.index:
-        edu_code = df.at[i, 'PEEDUCA']
-        sex = df.at[i, 'TESEX']
-        labor_force_status = df.at[i, 'TELFS']
+    
+    edu_dict = {31: 'High school or below', 32: 'High school or below',33: 'High school or below',34: 'High school or below',35: 'High school or below',36: 'High school or below',37: 'High school or below',38: 'High school or below',39: 'High school or below',40: 'College',41: 'College',42: 'College',43: 'Bachelor',44: 'Post graduate degree',45: 'Post graduate degree',46: 'Post graduate degree'}
+    
+    sex_dict = {1:'Male',2:'Female'}
+    
+    labor_dict = {1:'Employed',2:'Employed',3:'Unemployed',4:'Unemployed',5:'Not in labor force'}
+    
+    df['PEEDUCA'] = df['PEEDUCA'].map(edu_dict)
+    df['TESEX'] = df['TESEX'].map(sex_dict)
+    df['TELFS'] = df['TELFS'].map(labor_dict)
 
-        if edu_code <= 39:
-            df.at[i, 'PEEDUCA'] = 'High school or below'
-        elif edu_code >= 40 and edu_code <= 43:
-            df.at[i, 'PEEDUCA'] = 'Undergraduate'
-        else:
-            df.at[i, 'PEEDUCA'] = 'Post graduate degree'
-
-        if sex == 1:
-            df.at[i, 'TESEX'] = 'Male'
-        else:
-            df.at[i, 'TESEX'] = 'Female'
-
-        if labor_force_status <= 2:
-            df.at[i, 'TELFS'] = 'Employed'
-        elif labor_force_status <= 4:
-            df.at[i, 'TELFS'] = 'Unemployed'
-        else:
-            df.at[i, 'TELFS'] = 'Not in labor force'
     return df
