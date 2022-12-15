@@ -27,5 +27,6 @@ def preprocess(file_name):
     
     df.rename(columns={'TEAGE':'age'}, inplace=True)
     df.rename(columns={'TRERNWA':'weekly_income'}, inplace=True)
-
+    
+    df.dropna()
     return df
