@@ -9,12 +9,23 @@ def preprocess(file_name):
     
     labor_dict = {1:'Employed',2:'Employed',3:'Unemployed',4:'Unemployed',5:'Not in labor force'}
     
+    hispan_dict = {1:'Hispanic',2:'Non-Hispanic'}
+    
+    metro_dict = {1:"Metro", 2:"Non-metropolitan", 3:"Not identified"}
+    
     df['PEEDUCA'] = df['PEEDUCA'].map(edu_dict)
     df['TESEX'] = df['TESEX'].map(sex_dict)
     df['TELFS'] = df['TELFS'].map(labor_dict)
+    df['PEHSPNON'] = df['PEHSPNON'].map(hispan_dict)
+    df['GTMETSTA'] = df['GTMETSTA'].map(metro_dict)
     
     df.rename(columns={'PEEDUCA':'education_level'}, inplace=True)
     df.rename(columns={'TESEX':'sex'}, inplace=True)
     df.rename(columns={'TELFS':'labor_status'}, inplace=True)
+    df.rename(columns={'PEHSPNON':'Hispanic'}, inplace=True)
+    df.rename(columns={'GTMETSTA':'Metropolitan_status'}, inplace=True)
     
+    df.rename(columns={'TEAGE':'age'}, inplace=True)
+    df.rename(columns={'TRERNWA':'weekly_income'}, inplace=True)
+
     return df
