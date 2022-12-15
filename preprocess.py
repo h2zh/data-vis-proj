@@ -12,5 +12,9 @@ def preprocess(file_name):
     df['PEEDUCA'] = df['PEEDUCA'].map(edu_dict)
     df['TESEX'] = df['TESEX'].map(sex_dict)
     df['TELFS'] = df['TELFS'].map(labor_dict)
-
+    
+    df.rename(columns={'PEEDUCA':'education_level'}, inplace=True)
+    df.rename(columns={'TESEX':'sex'}, inplace=True)
+    df.rename(columns={'TELFS':'labor_status'}, inplace=True)
+    
     return df
