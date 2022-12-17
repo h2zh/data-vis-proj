@@ -1,8 +1,12 @@
 Please make sure you have the Plotly libary and the dash library installed.
 This can be achieved by executing following command:
+
 pip install dash
+
 pip install jupyter-dash
+
 pip install pandas
+
 pip install plotly
 
 To run the code, please put atussum_0321.csv under current folder
